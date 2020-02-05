@@ -16,30 +16,24 @@
  limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
-
   <!-- ====================================================================== -->
   <!-- P R O J E C T  D E S C R I P T I O N                                   -->
   <!-- ====================================================================== -->
-
   <parent>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-parent</artifactId>
     <version>48</version>
   </parent>
-
   <artifactId>commons-imaging</artifactId>
   <name>Apache Commons Imaging</name>
-  <version>1.0-alpha2-SNAPSHOT</version>
-
+  <version>1.0-alpha2-UBERALL</version>
   <!--
     Keep the description on a single line. Otherwise Maven might generate
     a corrupted MANIFEST.MF (see http://jira.codehaus.org/browse/MJAR-4)
    -->
   <description>Apache Commons Imaging (previously Sanselan) is a pure-Java image library.</description>
   <url>https://commons.apache.org/proper/commons-imaging/</url>
-
   <properties>
     <argLine>-Xmx512m</argLine>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -56,7 +50,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <checkstyle.plugin.version>3.0.0</checkstyle.plugin.version>
-
     <!-- Commons Release Plugin -->
     <!-- commons.bc.version>0.97</commons.bc.version -->
     <commons.rc.version>RC3</commons.rc.version>
@@ -66,28 +59,29 @@
     <commons.releaseManagerKey>33C6E01240C5468C2B7A556954E2764B48A42DF0</commons.releaseManagerKey>
     <junit.version>5.5.2</junit.version>
   </properties>
-
   <scm>
     <connection>scm:git:http://gitbox.apache.org/repos/asf/commons-imaging.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/commons-imaging.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf?p=commons-imaging.git</url>
     <tag>HEAD</tag>
   </scm>
-
   <distributionManagement>
+    <repository>
+      <id>bintray-uberall-maven</id>
+      <name>uberall-maven</name>
+      <url>https://api.bintray.com/maven/uberall/maven/commons-imaging/;publish=1</url>
+    </repository>
     <site>
       <id>apache.website</id>
       <name>Apache Commons Site</name>
       <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-imaging/</url>
     </site>
   </distributionManagement>
-
   <issueManagement>
     <system>jira</system>
     <url>https://issues.apache.org/jira/browse/IMAGING</url>
   </issueManagement>
   <inceptionYear>2007</inceptionYear>
-
   <build>
     <defaultGoal>clean verify apache-rat:check checkstyle:check findbugs:check javadoc:javadoc</defaultGoal>
     <plugins>
@@ -184,7 +178,7 @@
               <ignorePathToDelete>javadocs**</ignorePathToDelete>
             </ignorePathsToDelete>
           </configuration>
-        </plugin>     
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
@@ -211,7 +205,6 @@
       </plugins>
     </pluginManagement>
   </build>
-
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -232,7 +225,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <reporting>
     <plugins>
       <plugin>
@@ -357,7 +349,6 @@
       </plugin>
     </plugins>
   </reporting>
-
   <profiles>
     <profile>
       <id>jdk8-javadoc</id>
@@ -390,18 +381,16 @@
                 <configuration>
                   <tasks>
                     <exec executable="svn">
-                      <arg line="checkout --depth immediates ${commons.scmPubUrl} ${commons.scmPubCheckoutDirectory}" />
+                      <arg line="checkout --depth immediates ${commons.scmPubUrl} ${commons.scmPubCheckoutDirectory}"/>
                     </exec>
-
                     <exec executable="svn">
-                      <arg line="update --set-depth exclude ${commons.scmPubCheckoutDirectory}/javadocs" />
+                      <arg line="update --set-depth exclude ${commons.scmPubCheckoutDirectory}/javadocs"/>
                     </exec>
-
                     <pathconvert pathsep=" " property="dirs">
-                      <dirset dir="${commons.scmPubCheckoutDirectory}" includes="*" />
+                      <dirset dir="${commons.scmPubCheckoutDirectory}" includes="*"/>
                     </pathconvert>
                     <exec executable="svn">
-                      <arg line="update --set-depth infinity ${dirs}" />
+                      <arg line="update --set-depth infinity ${dirs}"/>
                     </exec>
                   </tasks>
                 </configuration>
@@ -412,11 +401,9 @@
       </build>
     </profile>
   </profiles>
-
   <!-- ====================================================================== -->
   <!-- P E O P L E                                                            -->
   <!-- ====================================================================== -->
-
   <developers>
     <developer>
       <name>Charles M. Chen</name>
@@ -451,7 +438,6 @@
       <id>mbenson</id>
     </developer>
   </developers>
-
   <contributors>
     <contributor>
       <name>Adrian Moerchen</name>
