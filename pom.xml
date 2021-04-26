@@ -31,7 +31,7 @@
 
   <artifactId>commons-imaging</artifactId>
   <name>Apache Commons Imaging</name>
-  <version>1.0-alpha2-SNAPSHOT</version>
+  <version>1.0-alpha2-UBERALL</version>
 
   <!--
     Keep the description on a single line. Otherwise Maven might generate
@@ -75,11 +75,11 @@
   </scm>
 
   <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <name>Apache Commons Site</name>
-      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-imaging/</url>
-    </site>
+    <repository>
+      <id>github</id>
+      <name>GitHub Uberall Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/uberall/commons-imaging</url>
+    </repository>
   </distributionManagement>
 
   <issueManagement>
@@ -184,7 +184,7 @@
               <ignorePathToDelete>javadocs**</ignorePathToDelete>
             </ignorePathsToDelete>
           </configuration>
-        </plugin>     
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
